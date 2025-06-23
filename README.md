@@ -42,3 +42,53 @@ const HeadingComponent = () => (
 
 here if getData passes any malicious code to your site.
 then JSX will sanitises it and then it gets rendered to html.
+
+# Folder structer for Food App
+
+/\*\*
+
+- Header
+- - Logo\*
+- - Nav Items
+- Body
+- - Search
+- - Restaurant Container
+-     - Restaurant Card
+- Footer
+- - Copyrights
+- - Links
+- - Address
+- - Contact
+    \*\*/
+
+# Two types of export/import
+
+- Default Export/import
+  export default Component;
+  import Component from 'path';
+
+- Named Export/import
+  export Const Component;
+  import {Component} from 'path';
+
+  # React Hooks
+
+  (Normal JS Utility Functions)
+
+- useState() - Superpowerful state Variables in React
+- useEffect()
+
+# UseEffect hook
+
+- IF NO DEPENDENCY ARRAY - use effect is called on every component render.
+  useEffect(() => {
+  fetchData();
+  });
+- When depency array - use effect is called only on initial render. It will not called again when any use sate element is called.
+  useEffect(() => {
+  fetchData();
+  }, []);
+- When we put something inthe dependency - then use effect is called everytime the dependency is changed.
+  useEffect(() => {
+  fetchData();
+  }, [valueSearched]);
