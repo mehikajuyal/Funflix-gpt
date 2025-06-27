@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import HeaderComponent from "./src/components/Header";
 import BodyComponent from "./src/components/Body";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import AboutComponent from "./src/components/About";
+import AboutComponent from "./src/components/AboutClass";
 import ContactComponent from "./src/components/Contact";
 import ErrorComponent from "./src/components/Error";
 import { Outlet } from "react-router";
+import RestaurantMenuComponent from "./src/components/RestaurantMenu";
 
 // Actuall createReact Element which is very chaotic.
 // const parent = React.createElement('h1', {},"Hello World" );
@@ -104,6 +105,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactComponent />,
+      },
+      {
+        path: "/restaurantmenu/:restId",
+        element: <RestaurantMenuComponent />,
       },
     ],
     errorElement: <ErrorComponent />,
