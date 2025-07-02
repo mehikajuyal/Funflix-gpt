@@ -92,3 +92,34 @@ then JSX will sanitises it and then it gets rendered to html.
   useEffect(() => {
   fetchData();
   }, [valueSearched]);
+
+# Cleaning in React - Similar to ngOnDestroy in angular (In functional Components)
+
+- This is done inside useEffect hook - using return function inside useEffect we can put our cleaning code.
+- For eg. If we use setInterval inside useEffect it will stay till we do not clean it on the component change, as
+  we are building SPA , so the page do not get refreshed , as a result setInterval stay active even if we navigate
+  to other pages.
+  So, in order to destroy it while navigating to other pages - we have return function inside useEffect hook.
+
+  useEffect(() => {
+  fetchData();
+  const timer = setInterval(() => {
+  console.log("Set Interval");
+  });
+
+  // This return function inside useEffect is to clear everything on component destroy, like we have ngDestroy in angular
+  return () => {
+  clearInterval(timer);
+  };
+  }, []);
+
+  # 3 stages in React Lifecycle hooks
+
+  - Mounting , Updating and Unmounting
+
+  - Mounting - constructor, Render , componentDidMount
+  - Updating - render, componentDidUpdate
+  - Unmounting - componentWillUnmount
+
+- Render Phase - constructor and render is called
+- Commit Phase - componentDidMount, componentDidUpdate, componentWillUnmount
