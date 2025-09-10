@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./src/components/Header";
 import BodyComponent from "./src/components/Body";
@@ -8,6 +8,10 @@ import ContactComponent from "./src/components/Contact";
 import ErrorComponent from "./src/components/Error";
 import { Outlet } from "react-router";
 import RestaurantMenuComponent from "./src/components/RestaurantMenu";
+import UserContext from "./src/utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./src/utils/Store/appStore";
+import CartComponent from "./src/components/CartComponent";
 
 // Actuall createReact Element which is very chaotic.
 // const parent = React.createElement('h1', {},"Hello World" );
@@ -80,14 +84,26 @@ import RestaurantMenuComponent from "./src/components/RestaurantMenu";
 /*************** Creating a Food App *******************/
 
 const AppLayout = () => {
+const [userName, setUserName] = useState();
+useEffect(() => {
+  const data = {name: 'Mehika Juyal'};
+  setUserName(data.name);
+}, [] )
+
   return (
+    <Provider store={appStore}>
+    <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
     <div className="appLayout">
       <HeaderComponent />
       {/* <BodyComponent /> */}
       <Outlet />
     </div>
+    </UserContext.Provider>
+    </Provider>
   );
 };
+
+const Grocery = lazy(() => import("./src/components/Grocery"));
 
 const appRouter = createBrowserRouter([
   {
@@ -107,9 +123,17 @@ const appRouter = createBrowserRouter([
         element: <ContactComponent />,
       },
       {
+        path: "/grocery",
+        element: <Grocery />,
+      },
+      {
         path: "/restaurantmenu/:restId",
         element: <RestaurantMenuComponent />,
       },
+      {
+        path: "/cart",
+        element: <CartComponent></CartComponent>
+      }
     ],
     errorElement: <ErrorComponent />,
   },
