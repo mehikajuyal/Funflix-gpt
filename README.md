@@ -42,32 +42,40 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 ## FUNFLIX GPT
 
-- Create React App - cmd - npx create-react-app funflix-gpt
+# Create React App - cmd - npx create-react-app funflix-gpt
 
-## Configure Tailwind CSS (https://v3.tailwindcss.com/docs/guides/create-react-app)
-- npm install -D tailwindcss@3
-- npx tailwindcss init
-# Tailwind.config.js  
-- /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
+# Configure Tailwind CSS (https://v3.tailwindcss.com/docs/guides/create-react-app)
+   - npm install -D tailwindcss@3
+   - npx tailwindcss init
+     - Tailwind.config.js  
+         - /** @type {import('tailwindcss').Config} */
+         module.exports = {
+           content: [
+             "./src/**/*.{js,jsx,ts,tsx}",
+           ],
+           theme: {
+             extend: {},
+           },
+           plugins: [],
+         }
 
-# index.css
-- @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-- npm run start
+     - index.css
+        - @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        
+     - npm run start
 
 # To generate boiler plate code
-- rafce -> hit enter
+- rafce -> hit enter (first install extension ES7+ React/Redux/React-Native snippets by dsznajder)
+
+# Setup Routing
+- npm i -D react-router-dom
+
+# Header 
+# Login Form 
+# Sign Up form
+
 
 
 
